@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * QGNerd Gamefication campaign Plugin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available on the World Wide Web at:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to access it on the World Wide Web, please send an email
+ * To: triz.beabento@gmail.com.  We will send you a copy of the source file.
+ *
+ * @category   Gamefication campaign Plugin
+ * @package    Gamefication_Campaign
+ * @copyright  Copyright (c) 2015 Beatriz Bento, Brasil
+ *             
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Beatriz Bento <triz.beabento@gmail.com>
+ */
+-->
+<config>
+	<modules>
+		<QGNerd_GameficationCampaign>
+			<version>0.0.1</version>
+		</QGNerd_GameficationCampaign>
+	</modules>
+
+	<global>
+		<models>
+			<QGNerd_gameficationcampaign>
+				<!--   O caminho para o nosso diretório de modelos,
+                    com separadores de diretório substituído por underlines-->
+				<class>QGNerd_GameficationCampaign_Model</class>
+				<resourceModel>gamefication_resource</resourceModel>
+			</QGNerd_gameficationcampaign>
+			<gamefication_resource>
+				<class>QGNerd_GameficationCampaign_Model_Resource</class>
+				<entities>
+					<gameficationCampaign>
+						<campaign>
+							<table>campaign</table>
+						</campaign>
+						<game>
+							<table>game</table>
+						</game>
+						<rewards>
+							<table>rewards</table>
+						</rewards>
+						<task>
+							<table>task</table>
+						</task>
+						<theme>
+							<table>theme</table>
+						</theme>
+						<task_theme>
+							<table>task_theme</table>
+						</task_theme>
+						<step>
+							<table>step</table>
+						</step>
+						<gamer>
+							<table>gamer</table>
+						</gamer>
+						<game_gamer>
+							<table>game_gamer</table>
+						</game_gamer>
+						<gamer_theme>
+							<table>gamer_theme</table>
+						</gamer_theme>
+					</gameficationCampaign>
+				</entities>
+			</gamefication_resource>
+		</models>
+
+		<resources>
+			<qgnerd_gameficationcampaign_setup>
+				<module>QGNerd_GameficationCampaign</module>
+				<class>QGNerd_GameficationCampaign_Model_Resource</class>
+			</qgnerd_gameficationcampaign_setup>
+		</resources>
+
+		<frontend>
+			<routers>
+				<gameficationcampaign_game>
+					<use>standard</use>
+					<args>
+						<module>GameficationCampaign_Game</module>
+					</args>
+				</gameficationcampaign_game>
+				<gameficationcampaign_gamer>
+					<use>standard</use>
+					<args>
+						<module>GameficationCampaign_Gamer</module>
+					</args>
+				</gameficationcampaign_gamer>
+			</routers>
+			<layout>
+				<updates>
+					<gamefication_campaign>
+						<file>gamefication_campaign_game.xml</file>
+					</gamefication_campaign>
+				</updates>
+			</layout>
+		</frontend>
+
+		<blocks>
+			<gamefication_campaign>
+				<class>GameficationCampaign_Game_Block</class>
+			</gamefication_campaign>
+		</blocks>
+
+		<events>
+			<event_name>
+				<observers>
+					<QGNerd_gameficationcampaign>
+						<!--modelo a ser instanciado-->
+						<class>QGNerd_gameficationcampaign/observer</class>
+						<!--metodo do modelo acima, para ser chamado-->
+						<method></method>
+						<!--geralmente usam singleton para os observadores-->
+						<type></type>
+					</QGNerd_gameficationcampaign>
+				</observers>
+			</event_name>
+		</events>
+	</global>
+</config>
